@@ -1,0 +1,17 @@
+# Archivos y carpetas de compilación
+/target/
+
+# Archivos de configuración de IDE
+*.iml
+.idea/
+.vscode/
+
+# Archivos temporales del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de log
+*.log
+
+# Maven
+.mvn/
