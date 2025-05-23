@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.islandesapp"},{"l":"com.islandesapp.dao"},{"l":"com.islandesapp.model"},{"l":"com.islandesapp.service"},{"l":"com.islandesapp.ui"},{"l":"service"}];updateSearchResults();

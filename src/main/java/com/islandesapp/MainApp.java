@@ -1,38 +1,44 @@
 package com.islandesapp;
 
 import com.islandesapp.dao.LeccionDAO;
+import com.islandesapp.dao.PalabraDAO;
 import com.islandesapp.dao.MongoConnection;
-import com.islandesapp.model.Leccion;
 import com.islandesapp.service.LeccionService;
-import com.mongodb.client.MongoDatabase;
+import com.islandesapp.service.PalabraService;
+import com.islandesapp.ui.LeccionView;
 
-import java.util.List;
+import javax.swing.*;
 
+/**
+ * Clase principal que inicia la aplicación
+ * mostrando la interfaz para gestionar lecciones.
+ */
 public class MainApp {
+
+    /**
+     * Método main que arranca la aplicación.
+     * Configura la conexión y lanza la ventana principal.
+     */
     public static void main(String[] args) {
-        System.out.println("IslandesApp - LeccionService test");
+        SwingUtilities.invokeLater(() -> {
+            MongoConnection.connect(); // Conecta a MongoDB
 
-        // Conectar a MongoDB
-        MongoConnection.connect();
-        MongoDatabase database = MongoConnection.getDatabase();
+            LeccionDAO leccionDAO = new LeccionDAO();
+            PalabraDAO palabraDAO = new PalabraDAO(); // Añadido para PalabraService
 
-        LeccionDAO leccionDAO = new LeccionDAO(database);
-        LeccionService leccionService = new LeccionService(leccionDAO);
+            LeccionService leccionService = new LeccionService(leccionDAO);
+            PalabraService palabraService = new PalabraService(palabraDAO);
 
-        // Crear una nueva lección
-        Leccion leccion = new Leccion("Saludos", "Lección sobre saludos básicos en islandés.");
-        leccionService.crearLeccion(leccion);
-        System.out.println("Lección creada: " + leccion.getTitulo());
+            JFrame frame = new JFrame("Gestor de Lecciones");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setSize(600, 400);
 
-        // Listar todas las lecciones
-        List<Leccion> lecciones = leccionService.listarTodasLasLecciones();
-        for (Leccion l : lecciones) {
-            System.out.println("Lección encontrada: " + l.getTitulo() + " - " + l.getDescripcion());
-        }
+            // Pasamos ambos servicios al constructor
+            LeccionView leccionView = new LeccionView(leccionService, palabraService);
+            frame.setContentPane(leccionView);
 
-        // Cerrar conexión
-        MongoConnection.close();
-
-        System.out.println("Fin del test de LeccionService.");
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
+        });
     }
 }

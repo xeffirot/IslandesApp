@@ -1,64 +1,95 @@
-# IslandesApp
+# 🇮🇸 IslandesApp
 
-**IslandesApp** es una aplicación de escritorio desarrollada en Java.  
-Su objetivo es facilitar el aprendizaje del idioma islandés  
-a través de lecciones, vocabulario y ejemplos prácticos.  
+**IslandesApp** es una aplicación de escritorio desarrollada en Java cuyo objetivo es facilitar el aprendizaje del idioma islandés mediante lecciones organizadas, vocabulario clasificado y ejemplos prácticos.
 
-La aplicación utiliza MongoDB como base de datos  
-para almacenar toda la información.
+Este proyecto ha sido desarrollado como Trabajo de Fin de Grado (TFG) por **James Francis Bastian** dentro del programa del Máster del Grupo Atrium.
+
+---
 
 ## 📚 Funcionalidades principales
 
-- Visualización de lecciones.
-- Consulta de palabras y traducciones.
-- Asociación de vocabulario a lecciones.
-- Interfaz de usuario sencilla.
-- Persistencia de datos con MongoDB.
+- ✅ Gestión y visualización de lecciones  
+- ✅ Consulta de palabras y traducciones con sus ejemplos  
+- ✅ Asociación de vocabulario a lecciones específicas  
+- ✅ Interfaz gráfica intuitiva y funcional (Swing)  
+- ✅ Persistencia de datos con MongoDB  
+- ✅ Separación en capas con patrones MVC y DAO  
+- ✅ Pruebas unitarias con JUnit  
+- ✅ Documentación generada con JavaDoc  
+
+---
 
 ## 🛠️ Tecnologías utilizadas
 
-- Java 17  
-- MongoDB  
-- Maven (opcional)  
-- Eclipse IDE  
+- ☕ Java 17  
+- 🗃️ MongoDB  
+- 📦 Maven  
+- 🧪 JUnit 5  
+- 🖥️ Swing (Java UI)  
+- 💡 Eclipse IDE  
+
+---
 
 ## 📁 Estructura del proyecto
 
 IslandesApp/
-│
 ├── src/
-│ ├── main/
-│ │ ├── java/
-│ │ │ └── islandesapp/
-│ │ │ ├── dao/
-│ │ │ ├── model/
-│ │ │ ├── service/
-│ │ │ ├── ui/
-│ │ │ └── MainApp.java
+│ └── main/
+│ └── java/
+│ └── com/
+│ └── islandesapp/
+│ ├── dao/
+│ ├── model/
+│ ├── service/
+│ ├── ui/
+│ └── MainApp.java
 │ └── resources/
-│
-├── docs/
+│ └── docs/
 │ ├── diagramas/
 │ └── memoria/
 │ └── memoria.md
-│
 ├── tests/
 │ └── islandesapp/
 │ └── service/
 │ └── LeccionServiceTest.java
-│
-├── README.md
+├── pom.xml
 ├── .gitignore
-└── pom.xml
+└── README.md
+---
 
+## 🧠 Diagrama de clases
 
-## Diagrama de Clases
+![Diagrama UML](docs/diagramas/UMLIslandes.png)
 
-A continuación, el diagrama UML que muestra las principales clases del proyecto IslandesApp:
+---
 
-![Diagrama UML](C:\Users\James\Desktop\Icelandic Maven Project\diagramaUML.png)   
+## 📦 Compilación y ejecución
 
-## 📌 Autor
+Para compilar y ejecutar la aplicación usando Maven:
 
-Proyecto desarrollado por **James**  
-como parte de su Trabajo de Fin de Grado.
+```bash
+mvn clean compile
+mvn exec:java -Dexec.mainClass="com.islandesapp.MainApp"
+
+```bash
+mvn clean compile
+mvn exec:java -Dexec.mainClass="com.islandesapp.MainApp"
+
+🧪 Tests
+Las pruebas unitarias están implementadas con JUnit 5 para validar la lógica del servicio.
+
+Para ejecutar los tests: mvn test
+
+Los tests se encuentran en src/test/java/islandesapp/service/.
+
+📖 Documentación JavaDoc
+Para generar la documentación JavaDoc completa del proyecto: mvn javadoc:javadoc
+
+La documentación se generará en target/site/apidocs/index.html. Abre ese archivo con un navegador para consultarla.
+
+Autor
+James Francis Bastian
+Email: jamesbastianfrancis@hotmail.com
+
+Licencia
+Este proyecto se ha desarrollado con fines educativos como Trabajo de Fin de Grado Atrium.

@@ -7,41 +7,103 @@
   <artifactId>islandesapp</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 
+  <properties>
+    <!-- Propiedades para versión y codificación -->
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <javadoc.encoding>UTF-8</javadoc.encoding>
+    <javadoc.docencoding>UTF-8</javadoc.docencoding>
+    <javadoc.charset>UTF-8</javadoc.charset>
+  </properties>
+
   <dependencies>
-	  
+    <!-- Driver MongoDB -->
     <dependency>
       <groupId>org.mongodb</groupId>
       <artifactId>mongodb-driver-sync</artifactId>
       <version>5.5.0</version>
-    </dependency>  
-    
+    </dependency>
+
+    <!-- Logging simple -->
     <dependency>
-    <groupId>org.slf4j</groupId>
-    <artifactId>slf4j-simple</artifactId>
-    <version>1.7.36</version>
-    </dependency> 
-    
-    <!-- Dependencias para tests -->
-<dependency>
-  <groupId>org.junit.jupiter</groupId>
-  <artifactId>junit-jupiter-api</artifactId>
-  <version>5.9.3</version>
-  <scope>test</scope>
-</dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>1.7.36</version>
+    </dependency>
 
-<dependency>
-  <groupId>org.junit.jupiter</groupId>
-  <artifactId>junit-jupiter-engine</artifactId>
-  <version>5.9.3</version>
-  <scope>test</scope>
-</dependency>
+    <!-- JUnit Jupiter para testing -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.9.3</version>
+      <scope>test</scope>
+    </dependency>
 
-<dependency>
-  <groupId>org.mockito</groupId>
-  <artifactId>mockito-core</artifactId>
-  <version>5.2.0</version>
-  <scope>test</scope>
-</dependency>
-    
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>5.9.3</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Mockito para mocks -->
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>5.2.0</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- JUnit Jupiter completo -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>5.9.3</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
+
+  <build>
+    <plugins>
+      <!-- Plugin para compilación -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.11.0</version>
+        <configuration>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
+          <encoding>${project.build.sourceEncoding}</encoding>
+        </configuration>
+      </plugin>
+
+      <!-- Plugin para ejecutar tests con JUnit 5 -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0-M8</version>
+        <configuration>
+          <includes>
+            <include>**/*Test.java</include>
+          </includes>
+        </configuration>
+      </plugin>
+
+      <!-- Plugin para JavaDoc -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.4.0</version>
+        <configuration>
+          <source>${maven.compiler.source}</source>
+          <encoding>${javadoc.encoding}</encoding>
+          <docencoding>${javadoc.docencoding}</docencoding>
+          <charset>${javadoc.charset}</charset>
+          <!-- Evitar que falle por advertencias -->
+          <failOnError>false</failOnError>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
