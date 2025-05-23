@@ -62,6 +62,9 @@ IslandesApp/
 ![Diagrama UML](docs/diagramas/UMLIslandes.png)
 
 ---
+## 🧠 Archivo subido a GitHub
+
+https://github.com/xeffirot/IslandesApp
 
 ## 📦 Compilación y ejecución
 
